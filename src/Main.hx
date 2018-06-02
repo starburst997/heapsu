@@ -9,7 +9,6 @@ class Main extends hxd.App {
             case hxd.System.Platform.Android | hxd.System.Platform.IOS : isMobile = true;
             default:
         }
-
         #end
 
         if (isMobile) {
@@ -34,8 +33,17 @@ class Main extends hxd.App {
 		bmp.x = s2d.width * 0.5;
 		bmp.y = s2d.height * 0.5;
 
+        // Dummy test
+        loadBeatmap(hxd.Res.load('beatmaps/testA/testA-normal.osu'));
+
         trace('Yo! Yo!');
 	}
+
+    function loadBeatmap(res:hxd.res.Resource) {
+        var beatmap = Beatmap.fromBytes(res.entry.getBytes());
+        
+        return beatmap;
+    }
 	
 	override function update(dt:Float) {
 		bmp.rotation += 0.1;
@@ -47,6 +55,7 @@ class Main extends hxd.App {
 	}
 	
 	static function main() {
+        hxd.Res.initLocal();
 		new Main();
 	}
 }
