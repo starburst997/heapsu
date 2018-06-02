@@ -1,0 +1,24 @@
+[submodule "submodules/IDZPrecompiledOgg"]
+	path = submodules/IDZPrecompiledOgg
+	url = git@github.com:iosdevzone/IDZPrecompiledOgg.git
+[submodule "submodules/IDZPrecompiledVorbis"]
+	path = submodules/IDZPrecompiledVorbis
+	url = git@github.com:iosdevzone/IDZPrecompiledVorbis.git
+[submodule "hashlink"]
+	path = submodules/hashlink
+	url = git@github.com:starburst997/hashlink.git
+[submodule "heaps"]
+	path = submodules/heaps
+	url = git@github.com:HeapsIO/heaps.git
+[submodule "libpng-for-iOS"]
+	path = submodules/libpng-for-iOS
+	url = git@github.com:starburst997/libpng-for-iOS.git
+[submodule "turbojpeg"]
+	path = submodules/turbojpeg
+	url = git@github.com:starburst997/turbojpeg.git
+[submodule "submodules/SDL-mirror"]
+	path = submodules/SDL-mirror
+	url = git@github.com:spurious/SDL-mirror.git
+[submodule "submodules/hxbit"]
+	path = submodules/hxbit
+	url = git@github.com:ncannasse/hxbit.git

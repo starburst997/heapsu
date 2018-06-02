@@ -1,0 +1,24 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "haxe.displayConfigurations": [ // one or more configurations for the haxe completion server
+        ["build.hxml"]
+    ],
+    "haxe.enableCompilationServer": true,
+    "haxe.buildCompletionCache": true,
+    "haxe.displayPort": 6003,
+    "haxe.displayServer": { // configuration for starting haxe completion server itself
+        "haxePath": "haxe", // path to the executable (default: `haxe`)
+        "arguments": ["v"], // arguments before --wait (-v is useful for debugging)
+
+        // platform-specific overrides of the keys above
+        // they will be merged into the default configuration
+        "windows": {},
+        "linux": {},
+        "osx": {}
+    },
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.enablePreview": false,
+    "search.exclude": {
+        "bin":true
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "command": "sh",
+            "taskName": "build",
+            "isBuildCommand": true,
+            "args": [
+                "make.sh"
+            ],
+            "presentation": {
+                "echo": false,
+                "focus": false,
+                "panel": "dedicated",
+                "reveal": "silent"
+            }
+        }
+        /*{
+            "type": "hxml",
+            "label": "Build",
+            "file": "build.hxml",
+            "problemMatcher": [
+                "$haxe-absolute",
+                "$haxe",
+                "$haxe-error",
+                "$haxe-trace"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }*/
+    ],
+    "problemMatcher": "$haxe"
+}
