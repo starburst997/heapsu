@@ -65,7 +65,7 @@
 		6D59118720A8BA8F00674147 /* fmt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fmt.c; path = ../../submodules/hashlink/libs/fmt/fmt.c; sourceTree = "<group>"; };
 		6D59118820A8BA8F00674147 /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sha1.c; path = ../../submodules/hashlink/libs/fmt/sha1.c; sourceTree = "<group>"; };
 		6D59118B20A8BAA000674147 /* _main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = _main.c; path = ../../submodules/hashlink/src/_main.c; sourceTree = "<group>"; };
-		6DAE0AE120A643AD009812F8 /* Lolipop */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lolipop; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DAE0AE120A643AD009812F8 /* Heapsu */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Heapsu; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DAE1C2120A739A6009812F8 /* libjpeg.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjpeg.8.dylib; path = "../../../../../../usr/local/Cellar/jpeg-turbo/1.5.3/lib/libjpeg.8.dylib"; sourceTree = "<group>"; };
 		6DAE1C2320A739B2009812F8 /* libturbojpeg.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libturbojpeg.0.dylib; path = "../../../../../../usr/local/Cellar/jpeg-turbo/1.5.3/lib/libturbojpeg.0.dylib"; sourceTree = "<group>"; };
 		6DAE1C2520A739DD009812F8 /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.16.dylib; path = ../../../../../../usr/local/Cellar/libpng/1.6.34/lib/libpng16.16.dylib; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 		6DAE0AE220A643AD009812F8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6DAE0AE120A643AD009812F8 /* Lolipop */,
+				6DAE0AE120A643AD009812F8 /* Heapsu */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -167,9 +167,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6DAE0AE020A643AD009812F8 /* Lolipop */ = {
+		6DAE0AE020A643AD009812F8 /* Heapsu */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6DAE0AE620A643AD009812F8 /* Build configuration list for PBXNativeTarget "Lolipop" */;
+			buildConfigurationList = 6DAE0AE620A643AD009812F8 /* Build configuration list for PBXNativeTarget "Heapsu" */;
 			buildPhases = (
 				6DAE0ADD20A643AD009812F8 /* Sources */,
 				6DAE0ADE20A643AD009812F8 /* Frameworks */,
@@ -180,9 +180,9 @@
 			dependencies = (
 				6D59117820A8BA1B00674147 /* PBXTargetDependency */,
 			);
-			name = Lolipop;
+			name = Heapsu;
 			productName = Test;
-			productReference = 6DAE0AE120A643AD009812F8 /* Lolipop */;
+			productReference = 6DAE0AE120A643AD009812F8 /* Heapsu */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -217,7 +217,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				6DAE0AE020A643AD009812F8 /* Lolipop */,
+				6DAE0AE020A643AD009812F8 /* Heapsu */,
 			);
 		};
 /* End PBXProject section */
@@ -337,7 +337,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = Lolipop;
+				PRODUCT_NAME = Heapsu;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -405,7 +405,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Lolipop;
+				PRODUCT_NAME = Heapsu;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -422,7 +422,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6DAE0AE620A643AD009812F8 /* Build configuration list for PBXNativeTarget "Lolipop" */ = {
+		6DAE0AE620A643AD009812F8 /* Build configuration list for PBXNativeTarget "Heapsu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6DAE0AE720A643AD009812F8 /* Debug */,

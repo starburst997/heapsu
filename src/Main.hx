@@ -37,9 +37,6 @@ class Main extends hxd.App {
         game = Game.create(s2d);
         
         // Load the first one
-        var test = hxd.Res.images.cursor;
-        trace(test.name, test.entry.path);
-
         var folder = hxd.Res.load('beatmaps');
         var beatmapFolders = folder.filter(folder -> folder.name.charAt(0) != '.').array();
         if (beatmapFolders.length > 0) {

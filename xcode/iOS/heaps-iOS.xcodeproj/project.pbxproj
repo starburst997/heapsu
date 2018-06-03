@@ -122,7 +122,7 @@
 		FA8B4BA21967070A00F8EB7C /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		FABA34D31D8B5E5600915323 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FAE0E9691BAF96A00098DFA4 /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
-		FD15FCB20E086866003BDF25 /* Lolipop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lolipop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD15FCB20E086866003BDF25 /* Heapsu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heapsu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD1B48920E313154007AB34E /* SDL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDL.xcodeproj; path = "../../submodules/SDL2/Xcode-iOS/SDL/SDL.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		FDB96ED30DEFC9C700FAF19F /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		FDB96EDF0DEFC9DC00FAF19F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -164,7 +164,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FD15FCB20E086866003BDF25 /* Lolipop.app */,
+				FD15FCB20E086866003BDF25 /* Heapsu.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -287,7 +287,7 @@
 			);
 			name = Heapsu;
 			productName = BMPTest;
-			productReference = FD15FCB20E086866003BDF25 /* Lolipop.app */;
+			productReference = FD15FCB20E086866003BDF25 /* Heapsu.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -469,7 +469,7 @@
 					"$(PROJECT_DIR)/../../submodules/turbojpeg/dependencies-lib/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.failsafegames.heapsu;
-				PRODUCT_NAME = Lolipop;
+				PRODUCT_NAME = Heapsu;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -499,7 +499,7 @@
 					"$(PROJECT_DIR)/../../submodules/turbojpeg/dependencies-lib/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.failsafegames.heapsu;
-				PRODUCT_NAME = Lolipop;
+				PRODUCT_NAME = Heapsu;
 				SDKROOT = iphoneos;
 			};
 			name = Release;
