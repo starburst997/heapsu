@@ -1,3 +1,6 @@
+using FS;
+using Lambda;
+
 class Main extends hxd.App {
 	var bmp:h2d.Bitmap;
 	
@@ -34,16 +37,23 @@ class Main extends hxd.App {
 		bmp.y = s2d.height * 0.5;
 
         // Dummy test
-        loadBeatmap(hxd.Res.load('beatmaps/testA/testA-normal.osu'));
+        var folder = hxd.Res.load('beatmaps');
+        var beatmapFolders = folder.filter(folder -> folder.name.charAt(0) != '.').array();
+
+        // Load the first one
+        if (beatmapFolders.length > 0) {
+            // Load first .osu in folder
+            var beatmapFolder = beatmapFolders[0];
+            var beatmaps = beatmapFolder.array();
+            if (beatmaps.length > 0) {
+                var beatmapEntry = beatmaps[0];
+                var beatmap = Beatmap.fromBytes(beatmapEntry.entry.getBytes());
+                trace(beatmap.fileFormat);
+            }
+        }
 
         trace('Yo! Yo!');
 	}
-
-    function loadBeatmap(res:hxd.res.Resource) {
-        var beatmap = Beatmap.fromBytes(res.entry.getBytes());
-        
-        return beatmap;
-    }
 	
 	override function update(dt:Float) {
 		bmp.rotation += 0.1;

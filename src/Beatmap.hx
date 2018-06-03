@@ -96,7 +96,7 @@ class Beatmap {
         return create().parseString(bytes.toString());
     }
     
-    var fileFormat:String;
+    public var fileFormat:String;
 
     // General
     var audioFilename:String;
