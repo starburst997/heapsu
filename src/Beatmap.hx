@@ -335,17 +335,15 @@ class Beatmap {
                             first = false;
                         }
 
-                        hitObject.setComboIndex(comboIndex);
-                        hitObject.setComboNumber(comboNumber++);
+                        hitObject.comboIndex = comboIndex;
+                        hitObject.comboNumber = comboNumber++;
 
                         objects.push(hitObject);
                     }
                 });
             default : 
                 Assert.warn('Unknown line header: $line');
-                strLines.iter(line -> {
-                    Assert.warn(':: $line');
-                });
+                strLines.iter(line -> Assert.warn(':: $line'));
         });
 
         return this;

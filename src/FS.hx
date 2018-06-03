@@ -33,6 +33,19 @@ class FS {
     public static inline function toInt(f:Float):Int {
         return Std.int(f);
     }
+
+    public static inline function parseInt(str:String):Int {
+        return Std.parseInt(str);
+    }
+
+    public static inline function parseFloat(str:String):Float {
+        return Std.parseFloat(str);
+    }
+
+    public static function toString(value:Float, p:Int = 5){
+        var t = Std.int(Math.pow(10, p));
+        return Std.string(Std.int(value * t) / t);
+    }
 }
 
 class FSArray {
@@ -45,6 +58,13 @@ class FSArray {
     @:generic
     public static inline function iter<T>(array:Array<T>, f:T->Void) {
         for (item in array) f(item);
+        return array;
+    }
+
+    @:generic
+    public static inline function iteri<T>(array:Array<T>, f:Int->T->Void) {
+        var i = 0;
+        for (item in array) f(i++, item);
         return array;
     }
 
