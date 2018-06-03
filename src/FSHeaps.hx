@@ -14,32 +14,20 @@ class FSHeaps {
     }
 
     public static inline function cover(bitmap:h2d.Bitmap, width:Int, height:Int, offsetX:Float = 0.0, offsetY:Float = 0.0, alpha:Float = 1.0, stretch:Bool = false, parallax:Float = 0.0):h2d.Bitmap {
-        var swidth = width;
-		var sheight = height;
-		if (!stretch) {
-			// fit image to screen
-			if (bitmap.tile.width / bitmap.tile.height > width / height)  // x > y
-				sheight = Std.int(width * bitmap.tile.height / bitmap.tile.width);
-			else
-				swidth = Std.int(height * bitmap.tile.width / bitmap.tile.height);
-		} else {
-			// fill screen while maintaining aspect ratio
-			if (bitmap.tile.width / bitmap.tile.height > width / height)  // x > y
-				swidth = Std.int(height * bitmap.tile.width / bitmap.tile.height);
-			else
-				sheight = Std.int(width * bitmap.tile.height / bitmap.tile.width);
-		}
-		if (parallax != 0.0) {
-			swidth = Std.int(swidth * parallax);
-			sheight = Std.int(sheight * parallax);
-		}
-		bitmap.scaleX = swidth / width;
-        bitmap.scaleY = sheight / height;
-		bitmap.alpha = alpha;
-		if (parallax == 0.0 && offsetX == 0 && offsetY == 0)
-			bitmap.drawCentered(width / 2, height / 2);
-		else
-			bitmap.drawCentered(width / 2 + offsetX, height / 2 + offsetY);
+        var bmpWidth = bitmap.tile.width;
+        var bmpHeight = bitmap.tile.height;
+        
+        if (bmpWidth > bmpHeight) {
+            var scale = height / bmpHeight;
+            bitmap.scale(scale);
+            bitmap.setPos(-(bmpWidth * scale - width) / 2, 0);
+        } else {
+            var scale = width / bmpWidth;
+            bitmap.scale(scale);
+            bitmap.setPos(0, -(bmpHeight * scale - height) / 2);
+        }
+
+        bitmap.alpha = alpha;
         return bitmap;
     }
 

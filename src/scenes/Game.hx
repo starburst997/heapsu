@@ -77,6 +77,8 @@ class Game extends h2d.Sprite {
         
         Assert.that(beatmap.objects.length > 0);
 
+        trace('STAGE', s2d.width, s2d.height);
+
         // Play music (use .ogg instead of .mp3)
         var musicPath = '${res.entry.directory}/${beatmap.audioFilename.replace('.mp3', '.ogg')}';
         var musicRes = hxd.Res.load(musicPath);

@@ -9,6 +9,8 @@ using StringTools;
 class Main extends hxd.App {
     
     var game:Game;
+
+    // TODO: Hack until hxd.System.Platform works
     var isMobile = #if mobile true #else false #end;
 
     override function setup() {
@@ -19,14 +21,15 @@ class Main extends hxd.App {
         }
         #end
 
-        /*if (isMobile) {
-            // Remove status bar
-            var stage = hxd.Stage.getInstance();
-            var e = h3d.Engine.getCurrent();
-            
-            @:privateAccess stage.window.displayMode = sdl.Window.DisplayMode.Fullscreen;
-            @:privateAccess e.resize(stage.window.width, stage.window.height);
-        }*/
+        // Fix retina display
+        // TODO: Finc a proper fix in hashlink / heaps
+        var stage = hxd.Stage.getInstance();
+        var e = h3d.Engine.getCurrent();
+        @:privateAccess e.resize(stage.window.drawableWidth, stage.window.drawableHeight);
+        
+        #if mobile
+        @:privateAccess stage.window.displayMode = sdl.Window.DisplayMode.Fullscreen;
+        #end
 
         super.setup();
     }
