@@ -99,67 +99,67 @@ class Beatmap {
     public var fileFormat:String;
 
     // General
-    var audioFilename:String;
-    var audioLeadIn:Int;
-    var audioHash:String;
-    var previewTime:Int;
-    var countdown:Int;
-    var sampleSet:String;
-    var stackLeniency:Float;
-    var mode:Int;
-    var letterboxInBreaks:Bool;
-    var widescreenStoryboard:Bool;
-    var epilepsyWarning:Bool;
-    var specialStyle:Bool;
+    public var audioFilename:String;
+    public var audioLeadIn:Int;
+    public var audioHash:String;
+    public var previewTime:Int;
+    public var countdown:Int;
+    public var sampleSet:String;
+    public var stackLeniency:Float;
+    public var mode:Int;
+    public var letterboxInBreaks:Bool;
+    public var widescreenStoryboard:Bool;
+    public var epilepsyWarning:Bool;
+    public var specialStyle:Bool;
 
     // Editor
-    var bookmarks:String;
-    var distanceSpacing:Int;
-    var beatDivisor:Int;
-    var gridSize:Int;
-    var timelineZoom:Float;
+    public var bookmarks:String;
+    public var distanceSpacing:Int;
+    public var beatDivisor:Int;
+    public var gridSize:Int;
+    public var timelineZoom:Float;
 
     // Metadata
-    var title:String;
-    var titleUnicode:String;
-    var artist:String;
-    var artistUnicode:String;
-    var creator:String;
-    var version:String;
-    var source:String;
-    var tags:String;
-    var beatmapID:Int;
-    var beatmapSetID:Int;
+    public var title:String;
+    public var titleUnicode:String;
+    public var artist:String;
+    public var artistUnicode:String;
+    public var creator:String;
+    public var version:String;
+    public var source:String;
+    public var tags:String;
+    public var beatmapID:Int;
+    public var beatmapSetID:Int;
 
     // Difficulty
-    var hpDrainRate:Float;
-    var circleSize:Float;
-    var overallDifficulty:Float; 
-    var approachRate:Float;
-    var sliderMultiplier:Float;
-    var sliderTickRate:Float;
+    public var hpDrainRate:Float;
+    public var circleSize:Float;
+    public var overallDifficulty:Float; 
+    public var approachRate:Float;
+    public var sliderMultiplier:Float;
+    public var sliderTickRate:Float;
 
     // Events
-    var backgroundFilename:String;
-    var videoFilename:String;
-    var videoOffset:Int;
-    var breaks:Array<Int>;
+    public var backgroundFilename:String;
+    public var videoFilename:String;
+    public var videoOffset:Int;
+    public var breaks:Array<Int>;
 
     // Timing Points
-    var timingPoints:Array<TimingPoint>;
-    var bpmMin:Int;
-    var bpmMax:Int;
+    public var timingPoints:Array<TimingPoint>;
+    public var bpmMin:Int;
+    public var bpmMax:Int;
 
     // Colours
-    var colors:Array<Int>;
-    var sliderBorder:Int;
+    public var colors:Array<Int>;
+    public var sliderBorder:Int;
 
     // HitObject
-    var endTime:Int;
-    var hitObjectCircle:Int;
-    var hitObjectSlider:Int;
-    var hitObjectSpinner:Int;
-    var objects:Array<HitObject>;
+    public var endTime:Int;
+    public var hitObjectCircle:Int;
+    public var hitObjectSlider:Int;
+    public var hitObjectSpinner:Int;
+    public var objects:Array<HitObject>;
 
     public function new() {
         
