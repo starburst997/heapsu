@@ -9,7 +9,7 @@
 #-lib hldx
 -lib hlsdl
 
--D windowSize=800x450
+#-D windowSize=800x450
 
 # output
 -hl bin/heapsu.hl

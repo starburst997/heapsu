@@ -19,14 +19,14 @@ class Main extends hxd.App {
         }
         #end
 
-        if (isMobile) {
+        /*if (isMobile) {
             // Remove status bar
             var stage = hxd.Stage.getInstance();
             var e = h3d.Engine.getCurrent();
             
             @:privateAccess stage.window.displayMode = sdl.Window.DisplayMode.Fullscreen;
             @:privateAccess e.resize(stage.window.width, stage.window.height);
-        }
+        }*/
 
         super.setup();
     }

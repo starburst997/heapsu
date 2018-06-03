@@ -12,18 +12,11 @@ class GameObject {
     var hitObject:HitObject;
     var game:Game;
 
-    var bmp:h2d.Bitmap;
-
     public function new(hitObject:HitObject, game:Game) {
         sprite = new h2d.Sprite();
 
         this.game = game;
         this.hitObject = hitObject;
-
-        /*var tile = h2d.Tile.fromColor(0xFF0000, 100, 100);
-		bmp = new h2d.Bitmap(tile, sprite);
-		bmp.x = -50;
-		bmp.y = -50;*/
     }
 
     public function draw(trackPosition:Float) {

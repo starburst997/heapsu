@@ -49,9 +49,13 @@ class FSHeaps {
         return bitmap;
     }
 
+    public static inline function changeScale(bitmap:h2d.Bitmap, scale:Float) {
+        bitmap.scale(scale);
+        return bitmap;
+    }
+
     public static inline function center(bitmap:h2d.Bitmap) {
-        var size = bitmap.getSize();
-        bitmap.setPos(bitmap.x - (size.width / 2), bitmap.y - (size.height / 2));
+        bitmap.setPos(bitmap.x - (bitmap.tile.width * bitmap.scaleX / 2), bitmap.y - (bitmap.tile.height * bitmap.scaleY / 2));
         return bitmap;
     }
 }

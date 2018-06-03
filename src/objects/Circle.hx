@@ -41,9 +41,13 @@ class Circle extends GameObject {
 
         hitCircle.ifNone(() -> {
             var res = hxd.Res.load('images/hitcircle.png');
-            var bmp = res.toImage().bitmap(sprite).center();
-            bmp.scale(0.40);
+            var bmp = res.toImage().bitmap(sprite).changeScale(0.40).center();
             hitCircle = bmp.toOption();
+
+            var c = new h2d.Graphics(sprite);
+            c.beginFill(color, 0.25);
+            c.drawCircle(0, 0, 50, 150);
+            c.endFill();
         });
 
         // TODO: !!!
