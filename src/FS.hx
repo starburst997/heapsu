@@ -30,7 +30,7 @@ class FS {
 
     /* Math */
 
-    public static inline function toInt(f:Float):Int {
+    public static inline function int(f:Float):Int {
         return Std.int(f);
     }
 
@@ -42,10 +42,24 @@ class FS {
         return Std.parseFloat(str);
     }
 
-    public static function toString(value:Float, p:Int = 5){
+    public static inline function toString(value:Float, p:Int = 5){
         var t = Std.int(Math.pow(10, p));
         return Std.string(Std.int(value * t) / t);
     }
+
+    public static inline function clamp(val:Int, low:Int, high:Int) {
+		return if (val < low) low;
+		else if (val > high) high;
+		else val;
+	}
+}
+
+class FSNumber {
+    public static inline function clamp(val:Float, low:Float, high:Float) {
+		return if (val < low) low;
+		else if (val > high) high;
+		else val;
+	}
 }
 
 class FSArray {

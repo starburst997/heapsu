@@ -279,10 +279,10 @@ class Beatmap {
                     var timingPoint = TimingPoint.create().parseString(line);
                     timingPoints.push(timingPoint);
                     
-                    if (!timingPoint.isInherited()) {
-                        var bpm = Math.round(60000 / timingPoint.getBeatLength());
-                        bpmMin = Math.min(bpm, bpmMin).toInt();
-                        bpmMax = Math.min(bpm, bpmMax).toInt();
+                    if (!timingPoint.inherited) {
+                        var bpm = Math.round(60000 / timingPoint.beatLength);
+                        bpmMin = Math.min(bpm, bpmMin).int();
+                        bpmMax = Math.min(bpm, bpmMax).int();
                     }
                 });
             case Colours : 
