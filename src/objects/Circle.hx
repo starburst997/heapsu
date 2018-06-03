@@ -80,7 +80,6 @@ class Circle extends GameObject {
 		var hitResultOffset = game.hitResultOffset;
 		var isAutoMod = false; //GameMod.AUTO.isActive();
 
-        trace(trackPosition, time + hitResultOffset[Hit50]);
 		if (trackPosition > time + hitResultOffset[Hit50]) {
 			/*if (isAutoMod)  // "auto" mod: catch any missed notes due to lag
 				data.sendHitResult(time, GameData.HIT_300, x, y, color, comboEnd, hitObject, HitObjectType.CIRCLE, true, 0, null, false);
@@ -107,7 +106,6 @@ class Circle extends GameObject {
     }
 
     public override function updatePosition() {
-        trace('Pos:', hitObject.getScaledX(), hitObject.getScaledY());
-        sprite.setPos(hitObject.getScaledX() + 100, hitObject.getScaledY() + 100);
+        sprite.setPos(hitObject.getScaledX(), hitObject.getScaledY());
     }
 }

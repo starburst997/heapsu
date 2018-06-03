@@ -26,6 +26,7 @@
 		6D4FB3D320A8D92700364EF5 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4FB3D120A8D92700364EF5 /* libjpeg.a */; };
 		6D67CEC220A8A93900D3F52D /* logo_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D90BD7120A89BEC001E63C4 /* logo_1024.png */; };
 		6D67CEC320A8A93B00D3F52D /* pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D90BD6B20A89BDF001E63C4 /* pattern.png */; };
+		6D731BAA20C4525A00840AB7 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 6D731BA920C4525A00840AB7 /* res */; };
 		6D90BD7320A89DDD001E63C4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D90BD7220A89DDD001E63C4 /* Images.xcassets */; };
 		FA86C0381D9765BB009CB637 /* iOS Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA86C0361D9765BA009CB637 /* iOS Launch Screen.storyboard */; };
 		FA8B4BA41967071300F8EB7C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8B4BA21967070A00F8EB7C /* CoreMotion.framework */; };
@@ -112,6 +113,7 @@
 		6D4FB3C220A8D38D00364EF5 /* libpng.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libpng.xcodeproj; path = "../../submodules/libpng-for-iOS/libpng.xcodeproj"; sourceTree = "<group>"; };
 		6D4FB3D020A8D92700364EF5 /* libturbojpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libturbojpeg.a; path = "../../submodules/turbojpeg/dependencies-lib/lib/libturbojpeg.a"; sourceTree = "<group>"; };
 		6D4FB3D120A8D92700364EF5 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjpeg.a; path = "../../submodules/turbojpeg/dependencies-lib/lib/libjpeg.a"; sourceTree = "<group>"; };
+		6D731BA920C4525A00840AB7 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = ../../res; sourceTree = "<group>"; };
 		6D90BD6B20A89BDF001E63C4 /* pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pattern.png; path = images/pattern.png; sourceTree = "<group>"; };
 		6D90BD7120A89BEC001E63C4 /* logo_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_1024.png; path = images/logo_1024.png; sourceTree = "<group>"; };
 		6D90BD7220A89DDD001E63C4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = images/Images.xcassets; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6D731BA920C4525A00840AB7 /* res */,
 				6D90BD7220A89DDD001E63C4 /* Images.xcassets */,
 				6D90BD7120A89BEC001E63C4 /* logo_1024.png */,
 				6D90BD6B20A89BDF001E63C4 /* pattern.png */,
@@ -267,9 +270,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FD15FCB10E086866003BDF25 /* Lolipop */ = {
+		FD15FCB10E086866003BDF25 /* Heapsu */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FD15FCB70E086867003BDF25 /* Build configuration list for PBXNativeTarget "Lolipop" */;
+			buildConfigurationList = FD15FCB70E086867003BDF25 /* Build configuration list for PBXNativeTarget "Heapsu" */;
 			buildPhases = (
 				FD15FCAE0E086866003BDF25 /* Resources */,
 				FD15FCAF0E086866003BDF25 /* Sources */,
@@ -282,7 +285,7 @@
 				6D4FB3BA20A8CEE900364EF5 /* PBXTargetDependency */,
 				6D1E7EDC20A75FD500C2FB60 /* PBXTargetDependency */,
 			);
-			name = Lolipop;
+			name = Heapsu;
 			productName = BMPTest;
 			productReference = FD15FCB20E086866003BDF25 /* Lolipop.app */;
 			productType = "com.apple.product-type.application";
@@ -296,7 +299,7 @@
 				LastUpgradeCheck = 0630;
 				TargetAttributes = {
 					FD15FCB10E086866003BDF25 = {
-						DevelopmentTeam = 6DLE5P4U52;
+						DevelopmentTeam = P7K4SUSDX6;
 					};
 				};
 			};
@@ -329,7 +332,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				FD15FCB10E086866003BDF25 /* Lolipop */,
+				FD15FCB10E086866003BDF25 /* Heapsu */,
 			);
 		};
 /* End PBXProject section */
@@ -373,6 +376,7 @@
 				6D67CEC320A8A93B00D3F52D /* pattern.png in Resources */,
 				FA86C0381D9765BB009CB637 /* iOS Launch Screen.storyboard in Resources */,
 				6D67CEC220A8A93900D3F52D /* logo_1024.png in Resources */,
+				6D731BAA20C4525A00840AB7 /* res in Resources */,
 				6D90BD7320A89DDD001E63C4 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,7 +447,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6DLE5P4U52;
+				DEVELOPMENT_TEAM = P7K4SUSDX6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -464,7 +468,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../../submodules/turbojpeg/dependencies-lib/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.failsafegames.lolipop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.failsafegames.heapsu;
 				PRODUCT_NAME = Lolipop;
 				SDKROOT = iphoneos;
 			};
@@ -474,7 +478,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6DLE5P4U52;
+				DEVELOPMENT_TEAM = P7K4SUSDX6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -494,7 +498,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../../submodules/turbojpeg/dependencies-lib/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.failsafegames.lolipop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.failsafegames.heapsu;
 				PRODUCT_NAME = Lolipop;
 				SDKROOT = iphoneos;
 			};
@@ -512,7 +516,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FD15FCB70E086867003BDF25 /* Build configuration list for PBXNativeTarget "Lolipop" */ = {
+		FD15FCB70E086867003BDF25 /* Build configuration list for PBXNativeTarget "Heapsu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FD15FCB50E086866003BDF25 /* Debug */,

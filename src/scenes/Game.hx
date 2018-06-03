@@ -104,6 +104,9 @@ class Game extends h2d.Sprite {
         var ignoreSkins = Options.isBeatmapSkinIgnored;
         var combo = beatmap.colors; // ignoreSkins ? Options.getSkin().getComboColors() : beatmap.colors
         beatmap.objects.iteri((i, hitObject) -> {
+            // Set size
+            hitObject.init(s2d.width, s2d.height);
+            
             // Is this the last note in the combo?
             var comboEnd = false;
             if (i + 1 >= beatmap.objects.length || beatmap.objects[i + 1].isNewCombo())

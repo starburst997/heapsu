@@ -9,7 +9,7 @@
 	url = git@github.com:starburst997/hashlink.git
 [submodule "heaps"]
 	path = submodules/heaps
-	url = git@github.com:HeapsIO/heaps.git
+	url = git@github.com:starburst997/heaps.git
 [submodule "libpng-for-iOS"]
 	path = submodules/libpng-for-iOS
 	url = git@github.com:starburst997/libpng-for-iOS.git
@@ -17,7 +17,7 @@
 	path = submodules/turbojpeg
 	url = git@github.com:starburst997/turbojpeg.git
 [submodule "submodules/SDL-mirror"]
-	path = submodules/SDL-mirror
+	path = submodules/SDL2
 	url = git@github.com:spurious/SDL-mirror.git
 [submodule "submodules/hxbit"]
 	path = submodules/hxbit
