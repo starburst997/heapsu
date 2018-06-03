@@ -17,7 +17,7 @@ class FSHeaps {
         var bmpWidth = bitmap.tile.width;
         var bmpHeight = bitmap.tile.height;
         
-        if (bmpWidth > bmpHeight) {
+        if ((bmpWidth > bmpHeight) && ((height / bmpHeight) * bmpWidth) >= width) {
             var scale = height / bmpHeight;
             bitmap.scale(scale);
             bitmap.setPos(-(bmpWidth * scale - width) / 2, 0);
