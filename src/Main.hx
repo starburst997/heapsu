@@ -35,7 +35,7 @@ class Main extends hxd.App {
         super.init();
 
         game = Game.create(s2d);
-
+        
         // Load the first one
         var folder = hxd.Res.load('beatmaps');
         var beatmapFolders = folder.filter(folder -> folder.name.charAt(0) != '.').array();

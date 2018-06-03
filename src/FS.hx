@@ -1,5 +1,10 @@
 import haxe.ds.Option;
 
+typedef Point = {
+    x:Int,
+    y:Int
+}
+
 /**
  * A collection of usefull tools
  */
@@ -116,6 +121,14 @@ class FSOption {
         switch(object) {
             case Some(object) : f(object);
             case None :
+        }
+        return object;
+    }
+
+    public static inline function ifNone<T>(object:Option<T>, f:Void->Void):Option<T> {
+        switch(object) {
+            case Some(object) : 
+            case None : f();
         }
         return object;
     }

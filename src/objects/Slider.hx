@@ -14,4 +14,6 @@ class Slider extends GameObject {
         this.color = color;
         this.comboEnd = comboEnd;
     }
+
+    
 }

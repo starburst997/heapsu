@@ -20,4 +20,5 @@ class Mod {
 class GameMod {
     public static var hardRock = Mod.create();
     public static var flashlight = Mod.create();
+    public static var relax = Mod.create();
 }
