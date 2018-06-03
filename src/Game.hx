@@ -10,8 +10,6 @@ class Game extends h2d.Sprite {
         return new Game(s2d);
     }
 
-    var bmp:h2d.Bitmap;
-
     var isLoaded:Bool;
     var s2d:h2d.Scene;
 
@@ -19,15 +17,9 @@ class Game extends h2d.Sprite {
     var music:hxd.snd.Channel;
     var background:h2d.Bitmap;
     
-
     public function new(s2d:h2d.Scene) {
         this.s2d = s2d;
         super(s2d);
-
-        var tile = h2d.Tile.fromColor(0xFF0000, 100, 100);
-        bmp = new h2d.Bitmap(tile, this);
-        bmp.x = s2d.width * 0.5;
-        bmp.y = s2d.height * 0.5;
     }
 
     public function load(res:hxd.res.Any) {
@@ -50,8 +42,6 @@ class Game extends h2d.Sprite {
     }
 
     public function update(dt:Float) {
-        bmp.rotation += dt * 0.1;
-
         if (isLoaded) {
             trace(music.position);
         }
