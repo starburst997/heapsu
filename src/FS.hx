@@ -111,4 +111,12 @@ class FSOption {
             case None : true;
         }
     }
+
+    public static inline function ifSome<T>(object:Option<T>, f:T->Void):Option<T> {
+        switch(object) {
+            case Some(object) : f(object);
+            case None :
+        }
+        return object;
+    }
 }

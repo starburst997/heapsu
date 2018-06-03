@@ -1,9 +1,12 @@
+import haxe.ds.Option;
+
 using FS;
 using Lambda;
+using StringTools;
 
 class Main extends hxd.App {
-	var bmp:h2d.Bitmap;
-	
+    
+    var game:Game;
     var isMobile = #if mobile true #else false #end;
 
     override function setup() {
@@ -26,46 +29,35 @@ class Main extends hxd.App {
         super.setup();
     }
 
-	override function init() {
+    override function init() {
         super.init();
 
-        trace(s2d.width, s2d.height);
-
-		var tile = h2d.Tile.fromColor(0xFF0000, 100, 100);
-		bmp = new h2d.Bitmap(tile, s2d);
-		bmp.x = s2d.width * 0.5;
-		bmp.y = s2d.height * 0.5;
-
-        // Dummy test
-        var folder = hxd.Res.load('beatmaps');
-        var beatmapFolders = folder.filter(folder -> folder.name.charAt(0) != '.').array();
+        game = Game.create(s2d);
 
         // Load the first one
+        var folder = hxd.Res.load('beatmaps');
+        var beatmapFolders = folder.filter(folder -> folder.name.charAt(0) != '.').array();
         if (beatmapFolders.length > 0) {
             // Load first .osu in folder
             var beatmapFolder = beatmapFolders[0];
-            var beatmaps = beatmapFolder.array();
+            var beatmaps = beatmapFolder.filter(file -> file.entry.name.endsWith('.osu')).array();
             if (beatmaps.length > 0) {
-                var beatmapEntry = beatmaps[0];
-                var beatmap = Beatmap.fromBytes(beatmapEntry.entry.getBytes());
-                trace(beatmap.fileFormat);
+                game.load(beatmaps[0]);
             }
         }
-
-        trace('Yo! Yo!');
-	}
-	
-	override function update(dt:Float) {
-		bmp.rotation += 0.1;
+    }
+    
+    override function update(dt:Float) {
+        game.update(dt);
 
         // Keyboard inputs
         if (hxd.Key.isPressed(hxd.Key.ESCAPE)) {
             hxd.System.exit();
         }
-	}
-	
-	static function main() {
+    }
+    
+    static function main() {
         hxd.Res.initLocal();
-		new Main();
-	}
+        new Main();
+    }
 }

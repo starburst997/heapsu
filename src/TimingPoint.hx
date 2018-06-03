@@ -1,5 +1,5 @@
-using StringTools;
 using FS;
+using StringTools;
 
 class TimingPoint {
     
@@ -17,26 +17,26 @@ class TimingPoint {
     public var inherited:Bool;
     public var kiai:Bool;
 
-    public function new() { }
+    public function new() {}
 
     public function parseString(str:String) {
         var values = str.split(',');
         Assert.that(values.length >= 7);
 
         time = Std.int(Std.parseFloat(values[0]));
-		meter = Std.parseInt(values[2]);
-		sampleType = Std.parseInt(values[3]);
-		sampleTypeCustom = Std.parseInt(values[4]);
-		sampleVolume = Std.parseInt(values[5]) / 100;
-		//inherited = values[6] == '1';
+        meter = Std.parseInt(values[2]);
+        sampleType = Std.parseInt(values[3]);
+        sampleTypeCustom = Std.parseInt(values[4]);
+        sampleVolume = Std.parseInt(values[5]) / 100;
+        //inherited = values[6] == '1';
 
         var beatLength = Std.parseFloat(values[1]);
-		if (beatLength > 0)
-			this.beatLength = beatLength;
-		else {
-			velocity = Std.int(beatLength);
-			inherited = true;
-		}
+        if (beatLength > 0)
+            this.beatLength = beatLength ;
+        else {
+            velocity = Std.int(beatLength);
+            inherited = true;
+        }
 
         return this;
     }

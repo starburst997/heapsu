@@ -301,7 +301,7 @@ class Beatmap {
             case HitObjects : 
                 var first = false;
                 var comboIndex = 0;
-			    var comboNumber = 1;
+                var comboNumber = 1;
                 strLines.iter(function(line) {
                     Assert.that(line.length >= 5);
                     
