@@ -1,3 +1,7 @@
+package data;
+
+import utils.*;
+
 using FS;
 
 @:enum

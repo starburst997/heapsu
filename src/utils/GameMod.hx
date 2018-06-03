@@ -1,3 +1,5 @@
+package utils;
+
 using FS;
 
 class Mod {
@@ -17,4 +19,5 @@ class Mod {
 
 class GameMod {
     public static var hardRock = Mod.create();
+    public static var flashlight = Mod.create();
 }

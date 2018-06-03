@@ -9,6 +9,6 @@ To run in iOS, `haxe build-hlc.hxml -D mobile`, open the XCode project at xcode/
 
 Put your uncompressed `.osu` folder in `res/beatmaps`
 
-You need to convert the `.mp3` to `.ogg` for now (ex: `ffmpeg -i song.mp3 song.ogg`)
+You need to convert the `.mp3` to `.ogg` for now (ex: `ffmpeg -i song.mp3 -ar 44100 -c:a libvorbis song.ogg`)
 
 WIP

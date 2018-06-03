@@ -1,3 +1,5 @@
+package utils;
+
 import haxe.ds.Option;
 
 using FS;

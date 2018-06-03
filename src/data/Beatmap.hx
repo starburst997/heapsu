@@ -1,5 +1,10 @@
+package data;
+
 import haxe.io.Bytes;
-import HitObject;
+
+import data.HitObject;
+import data.*;
+import utils.*;
 
 using StringTools;
 using FS;

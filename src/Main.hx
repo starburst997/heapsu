@@ -1,5 +1,7 @@
 import haxe.ds.Option;
 
+import scenes.*;
+
 using FS;
 using Lambda;
 using StringTools;

@@ -1,3 +1,5 @@
+package data;
+
 using FS;
 using StringTools;
 
