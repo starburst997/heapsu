@@ -150,26 +150,26 @@ class Game extends h2d.Sprite {
         hitResultOffset = [for (i in 0...HitMax) 1000];
 
         /*hitResultOffset = new int[GameData.HIT_MAX];
-		hitResultOffset[GameData.HIT_300]  = (int) Utils.mapDifficultyRange(overallDifficulty, 80, 50, 20);
-		hitResultOffset[GameData.HIT_100]  = (int) Utils.mapDifficultyRange(overallDifficulty, 140, 100, 60);
-		hitResultOffset[GameData.HIT_50]   = (int) Utils.mapDifficultyRange(overallDifficulty, 200, 150, 100);
-		hitResultOffset[GameData.HIT_MISS] = (int) (500 - (overallDifficulty * 10));
-		data.setHitResultOffset(hitResultOffset);*/
+        hitResultOffset[GameData.HIT_300]  = (int) Utils.mapDifficultyRange(overallDifficulty, 80, 50, 20);
+        hitResultOffset[GameData.HIT_100]  = (int) Utils.mapDifficultyRange(overallDifficulty, 140, 100, 60);
+        hitResultOffset[GameData.HIT_50]   = (int) Utils.mapDifficultyRange(overallDifficulty, 200, 150, 100);
+        hitResultOffset[GameData.HIT_MISS] = (int) (500 - (overallDifficulty * 10));
+        data.setHitResultOffset(hitResultOffset);*/
 
         isLoaded = true;
     }
 
     function setBeatLength(timingPoint:TimingPoint, setSampleSet:Bool) {
-		if (!timingPoint.inherited)
-			beatLengthBase = beatLength = timingPoint.beatLength;
-		else
-			beatLength = beatLengthBase * timingPoint.getSliderMultiplier();
-		if (setSampleSet) {
+        if (!timingPoint.inherited)
+            beatLengthBase = beatLength = timingPoint.beatLength;
+        else
+            beatLength = beatLengthBase * timingPoint.getSliderMultiplier();
+        if (setSampleSet) {
             // TODO: !!!
-			//HitSound.setDefaultSampleSet(timingPoint.getSampleType());
-			//SoundController.setSampleVolume(timingPoint.getSampleVolume());
-		}
-	}
+            //HitSound.setDefaultSampleSet(timingPoint.getSampleType());
+            //SoundController.setSampleVolume(timingPoint.getSampleVolume());
+        }
+    }
 
     public function update(dt:Float) {
         if (isLoaded) {
@@ -181,7 +181,7 @@ class Game extends h2d.Sprite {
             else if (deathTime > -1)  // "Easy" mod: health bar increasing
                 trackPosition = deathTime;
             var firstObjectTime = beatmap.objects[0].time;
-		    var timeDiff = firstObjectTime - trackPosition;
+            var timeDiff = firstObjectTime - trackPosition;
 
             if (GameMod.flashlight.isActive()) {
                 // TODO: !!!
@@ -206,7 +206,7 @@ class Game extends h2d.Sprite {
             }
 
             // break periods
-		    if (beatmap.breaks.length > 0 && breakIndex < beatmap.breaks.length && breakTime > 0) {
+            if (beatmap.breaks.length > 0 && breakIndex < beatmap.breaks.length && breakTime > 0) {
                 // Some fade to black transition + show the weird red arrows and the X / Check mark if over 50% health
                 // TODO: !!!
             } else {
@@ -218,31 +218,31 @@ class Game extends h2d.Sprite {
             passedObjects.iter(object -> {
                 if (object.update(dt, s2d.mouseX, s2d.mouseY, keyPressed, trackPosition)) {
                     object.reset();
-					passedObjects.remove(object);
+                    passedObjects.remove(object);
                 }
             });
 
-			// update objects (loop over any skipped indexes)
+            // update objects (loop over any skipped indexes)
             while (objectIndex < gameObjects.length && trackPosition > beatmap.objects[objectIndex].time) {
-				// check if we've already passed the next object's start time
-				var overlap =
-					(objectIndex + 1 < gameObjects.length &&
-					trackPosition > beatmap.objects[objectIndex + 1].time - hitResultOffset[Hit50]);
+                // check if we've already passed the next object's start time
+                var overlap =
+                    (objectIndex + 1 < gameObjects.length &&
+                    trackPosition > beatmap.objects[objectIndex + 1].time - hitResultOffset[Hit50]);
 
-				// update hit object and check completion status
-				var object = gameObjects[objectIndex];
+                // update hit object and check completion status
+                var object = gameObjects[objectIndex];
                 if (object.sprite.parent == null) addChild(object.sprite);
                 if (object.update(dt, s2d.mouseX, s2d.mouseY, keyPressed, trackPosition)) {
-					// done, so increment object index
+                    // done, so increment object index
                     object.reset();
-					objectIndex++;
-				} else if (overlap) {
-					// overlap, so save the current object and increment object index
-					passedObjects.push(object);
-					objectIndex++;
-				} else
-					break;
-			}
+                    objectIndex++;
+                } else if (overlap) {
+                    // overlap, so save the current object and increment object index
+                    passedObjects.push(object);
+                    objectIndex++;
+                } else
+                    break;
+            }
         }
     }
 }

@@ -39,16 +39,16 @@ class Curve extends h2d.Sprite {
         this.hitObject = hitObject;
 
         if (scaled) {
-			this.x = hitObject.getScaledX();
-			this.y = hitObject.getScaledY();
-			this.sliderX = hitObject.getScaledSliderX();
-			this.sliderY = hitObject.getScaledSliderY();
-		} else {
-			this.x = hitObject.x;
-			this.y = hitObject.y;
-			this.sliderX = hitObject.sliderX;
-			this.sliderY = hitObject.sliderY;
-		}
+            this.x = hitObject.getScaledX();
+            this.y = hitObject.getScaledY();
+            this.sliderX = hitObject.getScaledSliderX();
+            this.sliderY = hitObject.getScaledSliderY();
+        } else {
+            this.x = hitObject.x;
+            this.y = hitObject.y;
+            this.sliderX = hitObject.sliderX;
+            this.sliderY = hitObject.sliderY;
+        }
     }
 
     public function pointAt(t:Float):h3d.Vector {
@@ -59,9 +59,9 @@ class Curve extends h2d.Sprite {
         t = t.clamp(0, 1.0);
 
         // peppysliders
-		if (Options.skin.sliderStyle == PeppySlider || true) {
-			var drawUpTo = (curve.length * t).int();
-			var hitCircle = hxd.Res.images.hitcircle;
+        if (Options.skin.sliderStyle == PeppySlider || true) {
+            var drawUpTo = (curve.length * t).int();
+            var hitCircle = hxd.Res.images.hitcircle;
             var hitCircleOverlay = hxd.Res.images.hitcircleoverlay;
             drawUpTo.iter(i -> {
                 hitCirclesOverlay
@@ -69,19 +69,19 @@ class Curve extends h2d.Sprite {
                 .setPosition(curve[i].x, curve[i].y)
                 .setColor(WhiteFade);
             });
-			
+            
             /*for (int i = 0; i < drawUpTo; i++)
-				hitCircleOverlay.drawCentered(curve[i].x, curve[i].y, Colors.WHITE_FADE);
-			for (int i = 0; i < drawUpTo; i++)
-				hitCircle.drawCentered(curve[i].x, curve[i].y, color);*/
-		}
+                hitCircleOverlay.drawCentered(curve[i].x, curve[i].y, Colors.WHITE_FADE);
+            for (int i = 0; i < drawUpTo; i++)
+                hitCircle.drawCentered(curve[i].x, curve[i].y, color);*/
+        }
 
-		// mmsliders
-		else {
-			//if (renderState == null)
-			//	renderState = new CurveRenderState(hitObject, curve);
-			//renderState.draw(color, borderColor, t);
-		}
+        // mmsliders
+        else {
+            //if (renderState == null)
+            //    renderState = new CurveRenderState(hitObject, curve);
+            //renderState.draw(color, borderColor, t);
+        }
     }
 
     public inline function getX(i:Int) return i == 0 ? posX : sliderX[i - 1];

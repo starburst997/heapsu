@@ -32,12 +32,12 @@ class Circle extends GameObject {
 
     public override function draw(trackPosition:Float) {
         var timeDiff = hitObject.time - trackPosition;
-		var approachTime = game.approachTime;
-		var fadeInTime = game.approachTime;
-		var scale = timeDiff / approachTime;
-		var approachScale = 1 + scale * 3;
-		var fadeinScale = (timeDiff - approachTime + fadeInTime) / fadeInTime;
-		var alpha = (1 - fadeinScale).clamp(0, 1);
+        var approachTime = game.approachTime;
+        var fadeInTime = game.approachTime;
+        var scale = timeDiff / approachTime;
+        var approachScale = 1 + scale * 3;
+        var fadeinScale = (timeDiff - approachTime + fadeInTime) / fadeInTime;
+        var alpha = (1 - fadeinScale).clamp(0, 1);
 
         hitCircle.ifNone(() -> {
             var res = hxd.Res.images.hitcircle;
@@ -52,27 +52,27 @@ class Circle extends GameObject {
 
         // TODO: !!!
         /*if (GameMod.HIDDEN.isActive()) {
-			final int hiddenDecayTime = game.getHiddenDecayTime();
-			final int hiddenTimeDiff = game.getHiddenTimeDiff();
-			if (fadeinScale <= 0f && timeDiff < hiddenTimeDiff + hiddenDecayTime) {
-				float hiddenAlpha = (timeDiff < hiddenTimeDiff) ? 0f : (timeDiff - hiddenTimeDiff) / (float) hiddenDecayTime;
-				alpha = Math.min(alpha, hiddenAlpha);
-			}
-		}*/
+            final int hiddenDecayTime = game.getHiddenDecayTime();
+            final int hiddenTimeDiff = game.getHiddenTimeDiff();
+            if (fadeinScale <= 0f && timeDiff < hiddenTimeDiff + hiddenDecayTime) {
+                float hiddenAlpha = (timeDiff < hiddenTimeDiff) ? 0f : (timeDiff - hiddenTimeDiff) / (float) hiddenDecayTime;
+                alpha = Math.min(alpha, hiddenAlpha);
+            }
+        }*/
 
         // TODO: !!!
         /*if (timeDiff >= 0 && !GameMod.HIDDEN.isActive())
-			GameImage.APPROACHCIRCLE.getImage().getScaledCopy(approachScale).drawCentered(x, y, color);
-		GameImage.HITCIRCLE.getImage().drawCentered(x, y, color);
-		boolean overlayAboveNumber = Options.getSkin().isHitCircleOverlayAboveNumber();
-		if (!overlayAboveNumber)
-			GameImage.HITCIRCLE_OVERLAY.getImage().drawCentered(x, y, Colors.WHITE_FADE);
-		data.drawSymbolNumber(hitObject.getComboNumber(), x, y,
-				GameImage.HITCIRCLE.getImage().getWidth() * 0.40f / data.getDefaultSymbolImage(0).getHeight(), alpha);
-		if (overlayAboveNumber)
-			GameImage.HITCIRCLE_OVERLAY.getImage().drawCentered(x, y, Colors.WHITE_FADE);
+            GameImage.APPROACHCIRCLE.getImage().getScaledCopy(approachScale).drawCentered(x, y, color);
+        GameImage.HITCIRCLE.getImage().drawCentered(x, y, color);
+        boolean overlayAboveNumber = Options.getSkin().isHitCircleOverlayAboveNumber();
+        if (!overlayAboveNumber)
+            GameImage.HITCIRCLE_OVERLAY.getImage().drawCentered(x, y, Colors.WHITE_FADE);
+        data.drawSymbolNumber(hitObject.getComboNumber(), x, y,
+                GameImage.HITCIRCLE.getImage().getWidth() * 0.40f / data.getDefaultSymbolImage(0).getHeight(), alpha);
+        if (overlayAboveNumber)
+            GameImage.HITCIRCLE_OVERLAY.getImage().drawCentered(x, y, Colors.WHITE_FADE);
 
-		Colors.WHITE_FADE.a = oldAlpha;*/
+        Colors.WHITE_FADE.a = oldAlpha;*/
     }
 
     public override function update(delta:Float, mouseX:Float, mouseY:Float, keyPressed:Bool, trackPosition:Float):Bool {
@@ -81,32 +81,32 @@ class Circle extends GameObject {
 
         var time = hitObject.time;
 
-		var hitResultOffset = game.hitResultOffset;
-		var isAutoMod = false; //GameMod.AUTO.isActive();
+        var hitResultOffset = game.hitResultOffset;
+        var isAutoMod = false; //GameMod.AUTO.isActive();
 
-		if (trackPosition > time + hitResultOffset[Hit50]) {
-			/*if (isAutoMod)  // "auto" mod: catch any missed notes due to lag
-				data.sendHitResult(time, GameData.HIT_300, x, y, color, comboEnd, hitObject, HitObjectType.CIRCLE, true, 0, null, false);
+        if (trackPosition > time + hitResultOffset[Hit50]) {
+            /*if (isAutoMod)  // "auto" mod: catch any missed notes due to lag
+                data.sendHitResult(time, GameData.HIT_300, x, y, color, comboEnd, hitObject, HitObjectType.CIRCLE, true, 0, null, false);
 
-			else  // no more points can be scored, so send a miss
-				data.sendHitResult(trackPosition, GameData.HIT_MISS, x, y, null, comboEnd, hitObject, HitObjectType.CIRCLE, true, 0, null, false);*/
-			
+            else  // no more points can be scored, so send a miss
+                data.sendHitResult(trackPosition, GameData.HIT_MISS, x, y, null, comboEnd, hitObject, HitObjectType.CIRCLE, true, 0, null, false);*/
+            
             return true;
-		}
+        }
 
-		// "auto" mod: send a perfect hit result
-		else if (isAutoMod) {
-			if (Math.abs(trackPosition - time) < Std.int(hitResultOffset[Hit300])) {
-				//data.sendHitResult(time, GameData.HIT_300, x, y, color, comboEnd, hitObject, HitObjectType.CIRCLE, true, 0, null, false);
-				return true;
-			}
-		}
+        // "auto" mod: send a perfect hit result
+        else if (isAutoMod) {
+            if (Math.abs(trackPosition - time) < Std.int(hitResultOffset[Hit300])) {
+                //data.sendHitResult(time, GameData.HIT_300, x, y, color, comboEnd, hitObject, HitObjectType.CIRCLE, true, 0, null, false);
+                return true;
+            }
+        }
 
-		// "relax" mod: click automatically
-		else if (GameMod.relax.isActive() && trackPosition >= time)
-			return mousePressed(mouseX, mouseY, trackPosition);
+        // "relax" mod: click automatically
+        else if (GameMod.relax.isActive() && trackPosition >= time)
+            return mousePressed(mouseX, mouseY, trackPosition);
 
-		return false;
+        return false;
     }
 
     public override function updatePosition() {

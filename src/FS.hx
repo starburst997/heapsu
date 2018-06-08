@@ -30,8 +30,8 @@ class FS {
     }
 
     public static function iter<T>(it:Iterable<T>, f:T->Void) {
-		for (x in it) f(x);
-	}
+        for (x in it) f(x);
+    }
 
     /* Math */
 
@@ -53,10 +53,10 @@ class FS {
     }
 
     public static inline function clamp(val:Int, low:Int, high:Int) {
-		return if (val < low) low;
-		else if (val > high) high;
-		else val;
-	}
+        return if (val < low) low;
+        else if (val > high) high;
+        else val;
+    }
 }
 
 abstract Integer(Int) from Int to Int {
@@ -97,25 +97,25 @@ abstract Number(Float) from Float to Float {
 
 class FSNumber {
     public static inline function clamp(val:Float, low:Float = 0.0, high:Float = 1.0) {
-		return if (val < low) low;
-		else if (val > high) high;
-		else val;
-	}
+        return if (val < low) low;
+        else if (val > high) high;
+        else val;
+    }
 
     public static inline function iter(val:Int, f:Int->Void) {
-		for (i in 0...val) f(i);
+        for (i in 0...val) f(i);
         return val;
-	}
+    }
 
     public static inline function iterAdd(val:Int, f:Int->Integer) {
-		var total = 0;
+        var total = 0;
         for (i in 0...val) total += f(i);
         return total;
-	}
+    }
 
     public static inline function lerp(a:Float, b:Float, t:Float) {
-		return a * (1 - t) + b * t;
-	}
+        return a * (1 - t) + b * t;
+    }
 
     public static inline function equals(a:Float, b:Float, precision:Float = 0.0001) {
         return Math.abs(a - b) < precision;
