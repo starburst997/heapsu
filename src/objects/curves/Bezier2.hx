@@ -11,7 +11,7 @@ class Bezier2 extends CurveType {
         this.points = points;
 
         // TODO: Probably unnecessary???
-        var approxlength = points.length.iterAdd(i -> points[i].tmp().sub(points[i + 1]).len());
+        var approxlength = (points.length - 1).iterAdd(i -> points[i].tmp().sub(points[i + 1]).len());
         init(approxlength);
     }
 

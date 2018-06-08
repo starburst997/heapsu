@@ -10,6 +10,7 @@ abstract SliderStyle(Int) {
 
 class Skin {
     public var sliderStyle = PeppySlider;
+    public var hitCircleOverlayAboveNumber = true;
 
     public static inline function create() {
         return new Skin();

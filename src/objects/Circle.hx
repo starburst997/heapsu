@@ -6,6 +6,7 @@ import data.*;
 import utils.*;
 import scenes.*;
 import scenes.Game;
+import utils.Colors;
 
 using FS;
 using FSHeaps;
@@ -22,6 +23,8 @@ class Circle extends GameObject {
     var comboEnd:Bool;
 
     var hitCircle:Option<h2d.Bitmap> = None;
+    var approachCircle:Option<h2d.Bitmap> = None;
+    var hitCircleOverlay:Option<h2d.Bitmap> = None;
 
     public function new(hitObject:HitObject, game:Game, color:Int, comboEnd:Bool) {
         super(hitObject, game);
@@ -37,42 +40,51 @@ class Circle extends GameObject {
         var scale = timeDiff / approachTime;
         var approachScale = 1 + scale * 3;
         var fadeinScale = (timeDiff - approachTime + fadeInTime) / fadeInTime;
-        var alpha = (1 - fadeinScale).clamp(0, 1);
+        var alpha = (1 - fadeinScale).clamp();
 
         hitCircle.ifNone(() -> {
             var res = hxd.Res.images.hitcircle;
-            var bmp = res.bitmap(sprite).changeScale(0.40).center();
+            var bmp = res.bitmap(sprite).changeScale(0.40).center().setColor(color);
             hitCircle = bmp.toOption();
-
-            var c = new h2d.Graphics(sprite);
-            c.beginFill(color, 0.25);
-            c.drawCircle(0, 0, 50, 150);
-            c.endFill();
         });
 
-        // TODO: !!!
-        /*if (GameMod.HIDDEN.isActive()) {
-            final int hiddenDecayTime = game.getHiddenDecayTime();
-            final int hiddenTimeDiff = game.getHiddenTimeDiff();
-            if (fadeinScale <= 0f && timeDiff < hiddenTimeDiff + hiddenDecayTime) {
-                float hiddenAlpha = (timeDiff < hiddenTimeDiff) ? 0f : (timeDiff - hiddenTimeDiff) / (float) hiddenDecayTime;
+        approachCircle.ifNone(() -> {
+            var res = hxd.Res.images.approachcircle;
+            var bmp = res.bitmap(sprite).changeScale(0.40).center().setColor(color);
+            approachCircle = bmp.toOption();
+        });
+
+        hitCircleOverlay.ifNone(() -> {
+            var res = hxd.Res.images.approachcircle;
+            var bmp = res.bitmap(sprite).changeScale(0.40).center().setColor(color);
+            approachCircle = bmp.toOption();
+        });
+
+        if (GameMod.hidden.isActive()) {
+            var hiddenDecayTime = game.hiddenDecayTime;
+            var hiddenTimeDiff = game.hiddenTimeDiff;
+            if (fadeinScale <= 0 && timeDiff < hiddenTimeDiff + hiddenDecayTime) {
+                var hiddenAlpha = (timeDiff < hiddenTimeDiff) ? 0 : (timeDiff - hiddenTimeDiff) / hiddenDecayTime;
                 alpha = Math.min(alpha, hiddenAlpha);
             }
-        }*/
+        }
 
-        // TODO: !!!
-        /*if (timeDiff >= 0 && !GameMod.HIDDEN.isActive())
-            GameImage.APPROACHCIRCLE.getImage().getScaledCopy(approachScale).drawCentered(x, y, color);
-        GameImage.HITCIRCLE.getImage().drawCentered(x, y, color);
-        boolean overlayAboveNumber = Options.getSkin().isHitCircleOverlayAboveNumber();
-        if (!overlayAboveNumber)
-            GameImage.HITCIRCLE_OVERLAY.getImage().drawCentered(x, y, Colors.WHITE_FADE);
-        data.drawSymbolNumber(hitObject.getComboNumber(), x, y,
-                GameImage.HITCIRCLE.getImage().getWidth() * 0.40f / data.getDefaultSymbolImage(0).getHeight(), alpha);
-        if (overlayAboveNumber)
-            GameImage.HITCIRCLE_OVERLAY.getImage().drawCentered(x, y, Colors.WHITE_FADE);
+        switch([hitCircle, approachCircle, hitCircleOverlay]) {
+            case [Some(hit), Some(approach), Some(overlay)] : 
+                if (timeDiff >= 0 && !GameMod.hidden.isActive())
+                    approach.changeScale(approachScale).center();
 
-        Colors.WHITE_FADE.a = oldAlpha;*/
+                var overlayAboveNumber = Options.skin.hitCircleOverlayAboveNumber;
+                if (!overlayAboveNumber)
+                    overlay.center().setColor(WhiteFade);
+                //data.drawSymbolNumber(hitObject.getComboNumber(), x, y,
+                //        GameImage.HITCIRCLE.getImage().getWidth() * 0.40f / data.getDefaultSymbolImage(0).getHeight(), alpha);
+                if (overlayAboveNumber)
+                    overlay.center().setColor(WhiteFade);
+
+                //Colors.WHITE_FADE.a = oldAlpha;
+            default : 
+        }
     }
 
     public override function update(delta:Float, mouseX:Float, mouseY:Float, keyPressed:Bool, trackPosition:Float):Bool {

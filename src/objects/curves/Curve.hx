@@ -11,7 +11,7 @@ using FSHeaps;
 
 class Curve extends h2d.Sprite {
     
-    public static inline var CURVE_POINTS_SEPERATION = 5.0;
+    public static inline var POINTS_SEPERATION = 5.0;
 
     public static var borderColor:Int;
 
@@ -30,7 +30,7 @@ class Curve extends h2d.Sprite {
     public static function init(width:Int, height:Int, circleDiameter:Float, borderColor:Int) {
         Curve.borderColor = borderColor;
 
-        //urveRenderState.init(width, height, circleDiameter);
+        //curveRenderState.init(width, height, circleDiameter);
     }
 
     public function new(hitObject:HitObject, scaled:Bool) {
@@ -39,13 +39,13 @@ class Curve extends h2d.Sprite {
         this.hitObject = hitObject;
 
         if (scaled) {
-            this.x = hitObject.getScaledX();
-            this.y = hitObject.getScaledY();
+            this.posX = hitObject.getScaledX();
+            this.posY = hitObject.getScaledY();
             this.sliderX = hitObject.getScaledSliderX();
             this.sliderY = hitObject.getScaledSliderY();
         } else {
-            this.x = hitObject.x;
-            this.y = hitObject.y;
+            this.posX = hitObject.x;
+            this.posY = hitObject.y;
             this.sliderX = hitObject.sliderX;
             this.sliderY = hitObject.sliderY;
         }
@@ -63,17 +63,20 @@ class Curve extends h2d.Sprite {
             var drawUpTo = (curve.length * t).int();
             var hitCircle = hxd.Res.images.hitcircle;
             var hitCircleOverlay = hxd.Res.images.hitcircleoverlay;
+            
             drawUpTo.iter(i -> {
                 hitCirclesOverlay
                 .getOr(i, () -> hitCircleOverlay.bitmap(this).changeScale(0.40).center())
                 .setPosition(curve[i].x, curve[i].y)
                 .setColor(WhiteFade);
             });
-            
-            /*for (int i = 0; i < drawUpTo; i++)
-                hitCircleOverlay.drawCentered(curve[i].x, curve[i].y, Colors.WHITE_FADE);
-            for (int i = 0; i < drawUpTo; i++)
-                hitCircle.drawCentered(curve[i].x, curve[i].y, color);*/
+
+            drawUpTo.iter(i -> {
+                hitCircles
+                .getOr(i, () -> hitCircle.bitmap(this).changeScale(0.40).center())
+                .setPosition(curve[i].x, curve[i].y)
+                .setColor(color);
+            });
         }
 
         // mmsliders

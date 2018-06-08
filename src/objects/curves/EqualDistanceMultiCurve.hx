@@ -21,7 +21,7 @@ class EqualDistanceMultiCurve extends Curve {
 
     public function init(curvesList:Array<CurveType>){
         // now try to creates points the are equidistant to each other
-        this.ncurve = (hitObject.pixelLength / Curve.CURVE_POINTS_SEPERATION).int();
+        this.ncurve = (hitObject.pixelLength / Curve.POINTS_SEPERATION).int();
         this.curve = [];
 
         var distanceAt = 0.0;

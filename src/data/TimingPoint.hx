@@ -44,7 +44,7 @@ class TimingPoint {
     }
 
     public inline function getSliderMultiplier() {
-        return -velocity.clamp(10, 1000) / 100;
+        return -velocity.clamp(10, 1000) / 100 * -10;
     }
 
     public function toString() {

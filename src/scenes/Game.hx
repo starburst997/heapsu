@@ -54,8 +54,8 @@ class Game extends h2d.Sprite {
     var breakIndex:Int;
     var breakTime:Int;
 
-    var beatLengthBase:Float;
-    var beatLength:Float;
+    public var beatLengthBase:Float;
+    public var beatLength:Float;
 
     var objectIndex:Int;
     var gameObjects:Array<GameObject> = [];
@@ -66,6 +66,9 @@ class Game extends h2d.Sprite {
     public var approachTime:Int;
     public var fadeInTime:Int;
     public var hitResultOffset:Array<Hit> = [];
+
+    public var hiddenDecayTime:Int;
+    public var hiddenTimeDiff:Int;
 
     public function new(s2d:h2d.Scene) {
         this.s2d = s2d;
@@ -160,10 +163,11 @@ class Game extends h2d.Sprite {
     }
 
     function setBeatLength(timingPoint:TimingPoint, setSampleSet:Bool) {
-        if (!timingPoint.inherited)
+        if (!timingPoint.inherited){
             beatLengthBase = beatLength = timingPoint.beatLength;
-        else
+        } else {
             beatLength = beatLengthBase * timingPoint.getSliderMultiplier();
+        }
         if (setSampleSet) {
             // TODO: !!!
             //HitSound.setDefaultSampleSet(timingPoint.getSampleType());

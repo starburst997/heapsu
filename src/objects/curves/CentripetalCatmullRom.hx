@@ -23,7 +23,7 @@ class CentripetalCatmullRom extends CurveType {
             if (len <= 0)
                 len += 0.0001;
             approxLength += len;
-            // time[i] = Math.sqrt(len) + time[i-1];// ^(0.5)
+            //time[i] = Math.sqrt(len) + time[i-1]; // ^(0.5)
             time[i] = i;
         }
 
