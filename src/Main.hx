@@ -19,8 +19,7 @@ class Main extends hxd.App {
             case hxd.System.Platform.Android | hxd.System.Platform.IOS : isMobile = true;
             default:
         }
-        #end
-
+        
         // Fix retina display
         // TODO: Finc a proper fix in hashlink / heaps
         var stage = hxd.Stage.getInstance();
@@ -29,6 +28,7 @@ class Main extends hxd.App {
         
         #if mobile
         @:privateAccess stage.window.displayMode = sdl.Window.DisplayMode.Fullscreen;
+        #end
         #end
 
         super.setup();

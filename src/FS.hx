@@ -59,19 +59,77 @@ class FS {
 	}
 }
 
+abstract Integer(Int) from Int to Int {
+    @:from
+    static public inline function fromFloat(f:Float):Integer {
+        return Std.int(f);
+    }
+
+    @:to
+    static public inline function toFloat(i:Int):Float {
+        return i;
+    }
+}
+
+abstract Byte(Int) from Int to Int {
+    @:from
+    static public inline function fromFloat(f:Float):Byte {
+        return Std.int(f * 255);
+    }
+
+    @:to
+    static public inline function toFloat(i:Int):Float {
+        return i / 255.0;
+    }
+}
+
+abstract Number(Float) from Float to Float {
+    @:from
+    static public inline function fromInt(i:Int):Number {
+        return i * 1.0;
+    }
+
+    @:to
+    static public inline function toInt(f:Float):Int {
+        return Std.int(f);
+    }
+}
+
 class FSNumber {
-    public static inline function clamp(val:Float, low:Float, high:Float) {
+    public static inline function clamp(val:Float, low:Float = 0.0, high:Float = 1.0) {
 		return if (val < low) low;
 		else if (val > high) high;
 		else val;
 	}
+
+    public static inline function iter(val:Int, f:Int->Void) {
+		for (i in 0...val) f(i);
+        return val;
+	}
+
+    public static inline function iterAdd(val:Int, f:Int->Integer) {
+		var total = 0;
+        for (i in 0...val) total += f(i);
+        return total;
+	}
+
+    public static inline function lerp(a:Float, b:Float, t:Float) {
+		return a * (1 - t) + b * t;
+	}
+
+    public static inline function equals(a:Float, b:Float, precision:Float = 0.0001) {
+        return Math.abs(a - b) < precision;
+    }
 }
 
 class FSArray {
 
     @:generic
     public static inline function getOr<T>(array:Array<T>, index:Int, f:Void->T):T {
-        return index < array.length && index >= 0 ? array[index] : f();
+        return if (index < array.length && index >= 0)
+            array[index];
+        else
+            array[index] = f();
     }
 
     @:generic

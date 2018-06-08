@@ -1,8 +1,12 @@
 package data;
 
+import objects.*;
+import objects.curves.*;
 import utils.*;
 
 using FS;
+using FSHeaps;
+using haxe.EnumTools;
 
 @:enum
 abstract HitType(Int) from Int to Int {
@@ -35,6 +39,13 @@ class HitObject {
 
     public static var stackOffset:Float = 0.0;
 
+    // Dimension
+    public static var containerHeight:Int;
+    public static var xMultiplier:Float = 1.0;
+    public static var yMultiplier:Float = 1.0;
+    public static var xOffset:Int;
+    public static var yOffset:Int;
+
     // Common
     public var x:Float = 0.0;
     public var y:Float = 0.0;
@@ -54,19 +65,12 @@ class HitObject {
 
     // Slider
     public var sliderType:Slider;
-    public var sliderX:Array<Int> = [];
-    public var sliderY:Array<Int> = [];
+    public var sliderX:Array<Float> = [];
+    public var sliderY:Array<Float> = [];
     public var repeat:Int;
     public var pixelLength:Float;
     public var edgeHitSound:Array<Sound> = [];
     public var edgeAddition:Array<Array<Int>> = [];
-
-    // Dimension
-    var containerHeight:Int;
-    var xMultiplier:Float = 1.0;
-    var yMultiplier:Float = 1.0;
-    var xOffset:Int;
-    var yOffset:Int;
 
     // Misc
     public var comboIndex:Int;
@@ -76,9 +80,7 @@ class HitObject {
         return new HitObject();
     }
 
-    public function new() { }
-
-    public function init(width:Int, height:Int) {
+    public static function init(width:Int, height:Int) {
         containerHeight = height;
 		var swidth:Float = width;
 		var sheight:Float = height;
@@ -91,6 +93,8 @@ class HitObject {
 		xOffset = Std.int((width - MAX_X * xMultiplier) / 2);
 		yOffset = Std.int((height - MAX_Y * yMultiplier) / 2);
     }
+
+    public function new() { }
 
     public inline function getComboSkip():Int {
         return type >> NewCombo;
@@ -128,11 +132,10 @@ class HitObject {
 	}
 
     public function getScaledSliderY():Array<Float> {
-		return if (GameMod.hardRock.isActive()) {
+		return if (GameMod.hardRock.isActive())
 			sliderY.mapa(y -> containerHeight - ((y + stack * stackOffset) * yMultiplier + yOffset));
-		} else {
+		else
 			sliderY.mapa(y -> (y - stack * stackOffset) * yMultiplier + yOffset);
-		}
 	}
 
     public function getSliderTime(sliderMultiplier:Float, beatLength:Float) {
@@ -140,11 +143,10 @@ class HitObject {
 	}
 
     public function getEdgeHitSoundType(index:Int):Sound {
-        return if (index < edgeHitSound.length) {
+        return if (index < edgeHitSound.length)
             edgeHitSound[index];
-        } else {
+        else
             hitSound;
-        }
     }
 
     public function getSampleSet(index:Int):Int {
@@ -161,6 +163,23 @@ class HitObject {
 		if (addition.length > 1)
 			return addition[1];
 		return 0;
+	}
+
+    public function getSliderCurve(scaled:Bool):Curve {
+		return switch(sliderType) {
+            case PerfectCurve if (sliderX.length == 2) : 
+                var nora = new h3d.Vector(sliderX[0] - x, sliderY[0] - y).norm();
+                var norb = new h3d.Vector(sliderX[0] - sliderX[1], sliderY[0] - sliderY[1]).norm();
+                if (Math.abs(norb.x * nora.y - norb.y * nora.x) < 0.00001)
+                    new LinearBezier(this, false, scaled);  // vectors parallel, use linear bezier instead
+                else
+                    //new CircumscribedCircle(this, scaled);
+                    new LinearBezier(this, false, scaled);
+            //case Catmull : 
+            //    new CatmullCurve(this, scaled);
+            default : 
+                new LinearBezier(this, sliderType == Linear, scaled);
+        }
 	}
 
     public function parseValues(values:Array<String>) {

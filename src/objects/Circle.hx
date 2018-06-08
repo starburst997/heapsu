@@ -15,7 +15,7 @@ class Circle extends GameObject {
     private static var diameter:Float = 50.0;
 
     public static function init(circleDiameter:Float) {
-        //diameter = circleDiameter * HitObject.getXMultiplier();
+        diameter = circleDiameter * HitObject.xMultiplier;
     }
 
     var color:Int;
@@ -40,8 +40,8 @@ class Circle extends GameObject {
 		var alpha = (1 - fadeinScale).clamp(0, 1);
 
         hitCircle.ifNone(() -> {
-            var res = hxd.Res.load('images/hitcircle.png');
-            var bmp = res.toImage().bitmap(sprite).changeScale(0.40).center();
+            var res = hxd.Res.images.hitcircle;
+            var bmp = res.bitmap(sprite).changeScale(0.40).center();
             hitCircle = bmp.toOption();
 
             var c = new h2d.Graphics(sprite);

@@ -101,14 +101,14 @@ class Game extends h2d.Sprite {
         cursor = cursorRes.toImage().bitmap(this);
         cursor.scale(0.5);
 
+        // Set size
+        HitObject.init(s2d.width, s2d.height);
+
         // Read beatmap objects
         var comboIndex = 0;
         var ignoreSkins = Options.isBeatmapSkinIgnored;
         var combo = beatmap.colors; // ignoreSkins ? Options.getSkin().getComboColors() : beatmap.colors
         beatmap.objects.iteri((i, hitObject) -> {
-            // Set size
-            hitObject.init(s2d.width, s2d.height);
-            
             // Is this the last note in the combo?
             var comboEnd = false;
             if (i + 1 >= beatmap.objects.length || beatmap.objects[i + 1].isNewCombo())
@@ -136,16 +136,14 @@ class Game extends h2d.Sprite {
             }
 
             // Create GameObjects
-            gameObjects.push(new Circle(hitObject, this, color, comboEnd));
-
-            /*if (hitObject.isCircle())
+            if (hitObject.isCircle())
                 gameObjects.push(new Circle(hitObject, this, color, comboEnd));
             else if (hitObject.isSlider())
                 gameObjects.push(new Slider(hitObject, this, color, comboEnd));
             else if (hitObject.isSpinner())
                 gameObjects.push(new Spinner(hitObject, this));
             else  // invalid hit object, use a dummy GameObject
-                gameObjects.push(new Dummy(hitObject, this));*/
+                gameObjects.push(new Dummy(hitObject, this));
         });
 
         // Difficulty
