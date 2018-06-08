@@ -37,12 +37,8 @@ class Slider extends GameObject {
         draw(trackPosition);
         updatePosition();
 
-        trace(trackPosition, hitObject.time + sliderTimeTotal);
         if (trackPosition > hitObject.time + sliderTimeTotal) {
 			// TODO: !!!
-
-            trace('Already!?');
-
 			return true;
 		}
 

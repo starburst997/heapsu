@@ -34,7 +34,7 @@ class TimingPoint {
 
         var beatLength = Std.parseFloat(values[1]);
         if (beatLength > 0)
-            this.beatLength = beatLength ;
+            this.beatLength = beatLength;
         else {
             velocity = Std.int(beatLength);
             inherited = true;
@@ -44,7 +44,7 @@ class TimingPoint {
     }
 
     public inline function getSliderMultiplier() {
-        return -velocity.clamp(10, 1000) / 100 * -10;
+        return (-velocity).clamp(10, 1000) / 100;
     }
 
     public function toString() {
