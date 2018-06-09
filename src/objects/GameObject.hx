@@ -3,8 +3,6 @@ package objects;
 import data.*;
 import scenes.*;
 
-using FS;
-
 class GameObject {
     
     public var sprite:h2d.Sprite;

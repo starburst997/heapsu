@@ -1,9 +1,13 @@
+package tools;
+
 import haxe.macro.Context;
 import haxe.macro.Expr;
 
 using haxe.macro.Tools;
 
-class Assert {
+typedef Assert = tools.FSAssert;
+
+class FSAssert {
     public static inline function warn(str:String) {
         trace('Warning: $str');
     }
@@ -17,6 +21,7 @@ class Assert {
     }
 
     public static macro function that(e:Expr) {
+        #if !display
         var s = e.toString();
         var p = e.pos;
         var el = [];
@@ -41,12 +46,15 @@ class Assert {
         var a = [for (i in 0...el.length) macro {expr: $v {descs[i]}, value: $i {"_tmp" + i}}];
     
         #if assert
-        el.push(macro if (!$e) @:pos(p) throw new Assert.AssertionFailure($v {s}, $a {a}));
+        el.push(macro if (!$e) @:pos(p) throw new tools.FSAssert.AssertionFailure($v {s}, $a {a}));
         #else
-        el.push(macro if (!$e) @:pos(p) trace(new Assert.AssertionFailure($v{s}, $a{a})));
+        el.push(macro if (!$e) @:pos(p) trace(new tools.FSAssert.AssertionFailure($v{s}, $a{a})));
         #end
 
         return macro $b {el};
+        #else
+        return macro {};
+        #end
     }
 }
 

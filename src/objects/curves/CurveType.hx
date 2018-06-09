@@ -3,9 +3,6 @@ package objects.curves;
 import data.*;
 import scenes.*;
 
-using FS;
-using FSHeaps;
-
 class CurveType {
     
     public var curve:Array<h3d.Vector> = [];

@@ -1,8 +1,5 @@
 package objects.curves;
 
-using FS;
-using FSHeaps;
-
 class Bezier2 extends CurveType {
     
     public var points:Array<h3d.Vector>;

@@ -1,15 +1,10 @@
 package objects;
 
-import haxe.ds.Option;
-
 import data.*;
 import utils.*;
 import scenes.*;
 import scenes.Game;
 import utils.Colors;
-
-using FS;
-using FSHeaps;
 
 class Circle extends GameObject {
     

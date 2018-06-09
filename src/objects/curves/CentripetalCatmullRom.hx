@@ -3,9 +3,6 @@ package objects.curves;
 import data.*;
 import scenes.*;
 
-using FS;
-using FSHeaps;
-
 class CentripetalCatmullRom extends CurveType {
     private var time:Array<Float> = [];
     private var points:Array<h3d.Vector> = [];

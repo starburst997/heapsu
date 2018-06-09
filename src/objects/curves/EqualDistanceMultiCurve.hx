@@ -4,10 +4,6 @@ import data.*;
 import objects.*;
 import scenes.*;
 
-using FS;
-using FSHeaps;
-using Lambda;
-
 class EqualDistanceMultiCurve extends Curve {
     
     public var startAngle:Float;

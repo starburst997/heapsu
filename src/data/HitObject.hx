@@ -4,9 +4,6 @@ import objects.*;
 import objects.curves.*;
 import utils.*;
 
-using FS;
-using FSHeaps;
-
 @:enum
 abstract HitType(Int) from Int to Int {
     var Circle       = 1;

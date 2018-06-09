@@ -1,4 +1,4 @@
-import haxe.ds.Option;
+package tools;
 
 typedef Point = {
     x:Int,
@@ -130,6 +130,13 @@ class FSArray {
             array[index];
         else
             array[index] = f();
+    }
+
+    @:generic
+    public static inline function filter<T>(array:Array<T>, f:T->Bool) {
+        var filtered = [];
+        for (item in array) if (f(item)) filtered.push(item);
+        return filtered;
     }
 
     @:generic

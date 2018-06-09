@@ -1,14 +1,8 @@
 package scenes;
 
-import haxe.ds.Option;
-
 import data.*;
 import objects.*;
 import utils.*;
-
-using FS;
-using FSHeaps;
-using StringTools;
 
 @:enum
 abstract Hit(Int) from Int to Int {
@@ -38,8 +32,8 @@ class Game extends h2d.Sprite {
     var isLoaded:Bool;
     var s2d:h2d.Scene;
 
-    var beatmap:Beatmap;
-    var music:hxd.snd.Channel;
+    public var beatmap:Beatmap;
+    public var music:hxd.snd.Channel;
     var background:h2d.Bitmap;
     var video:Option<h2d.Bitmap> = None;
 
@@ -160,6 +154,12 @@ class Game extends h2d.Sprite {
         data.setHitResultOffset(hitResultOffset);*/
 
         isLoaded = true;
+
+        return beatmap;
+    }
+
+    public function onResize() {
+
     }
 
     function setBeatLength(timingPoint:TimingPoint, setSampleSet:Bool) {

@@ -1,9 +1,5 @@
 package utils;
 
-import haxe.ds.Option;
-
-using FS;
-
 class LinePointer {
     public var index:Int = 0;
     public static inline function create() { return new LinePointer(); }

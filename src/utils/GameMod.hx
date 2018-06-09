@@ -1,7 +1,5 @@
 package utils;
 
-using FS;
-
 class Mod {
     public static function create() {
         return new Mod();

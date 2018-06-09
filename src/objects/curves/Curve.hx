@@ -6,9 +6,6 @@ import utils.*;
 import utils.Colors;
 import skins.Skin;
 
-using FS;
-using FSHeaps;
-
 class Curve extends h2d.Sprite {
     
     public static inline var POINTS_SEPERATION = 5.0;

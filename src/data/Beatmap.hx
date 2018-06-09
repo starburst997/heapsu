@@ -6,9 +6,6 @@ import data.HitObject;
 import data.*;
 import utils.*;
 
-using StringTools;
-using FS;
-
 @:enum
 abstract Header(String) {
     var General              = '[General]';

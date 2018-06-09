@@ -1,8 +1,5 @@
 package data;
 
-using FS;
-using StringTools;
-
 class TimingPoint {
     
     public static inline function create() {

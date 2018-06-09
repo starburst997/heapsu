@@ -4,9 +4,6 @@ import data.*;
 import objects.*;
 import scenes.*;
 
-using FS;
-using FSHeaps;
-
 class LinearBezier extends EqualDistanceMultiCurve {
     
     public function new(hitObject:HitObject, line:Bool, scaled:Bool = true) {
